@@ -14,6 +14,11 @@ let selectedRoomId = null;
 let ciBooking = null;
 
 function mapHotel(row){
+  const imageByHotel = {
+    KS01: 'hotel-central',
+    KS02: 'hotel-lotus',
+    KS03: 'hotel-riverside',
+  };
   return {
     id: row.makhachsan,
     name: row.tenkhachsan,
@@ -24,10 +29,14 @@ function mapHotel(row){
     rating: `${Number(row.diemdanhgia || 0).toLocaleString('vi-VN')}/10`,
     reviews: Number(row.soluotdanhgia || 0),
     amenities: '',
-    img: '',
+    img: imageByHotel[row.makhachsan] || 'hotel-central',
   };
 }
 function mapRoom(row){
+  const normalizedType = removeDiacritics(row.loaiphong || '').toLowerCase();
+  let imageClass = 'room-deluxe';
+  if (normalizedType.includes('superior') || normalizedType.includes('standard')) imageClass = 'room-superior';
+  if (normalizedType.includes('suite')) imageClass = 'room-suite';
   return {
     id: row.maphong,
     hotelId: row.makhachsan,
@@ -43,6 +52,7 @@ function mapRoom(row){
     services: row.dichvudikem || '',
     amenities: [],
     status: row.trangthaiphong || 'Trống',
+    img: imageClass,
   };
 }
 function mapBooking(row, customers){
@@ -305,7 +315,7 @@ function renderRooms(){
   document.getElementById('rooms-list').innerHTML = rooms.map(r => {
     return `
     <article class="card hotel">
-      <div class="${imgClass(hotel.img)}"></div>
+      <div class="${imgClass(r.img)}"></div>
       <div class="body">
         <span class="badge success">Còn trống</span>
         <h4>${r.name}</h4>
@@ -334,7 +344,7 @@ function ratingLabel(ratingStr){
 }
 function renderRoomDetail(){
   const r = getRoom(selectedRoomId), h = getHotel(r.hotelId);
-  document.getElementById('rd-img-main').className = 'img ' + imgClass(h.img);
+  document.getElementById('rd-img-main').className = imgClass(r.img);
   document.getElementById('rd-rating').textContent = ratingLabel(h.rating);
   document.getElementById('rd-hotel').textContent = h.name.toUpperCase();
   document.getElementById('rd-name').textContent = r.name;

@@ -36,9 +36,13 @@ button:disabled{opacity:.5;cursor:not-allowed}
 .grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
 .card{background:#fff;border:1px solid #e7ecf4;border-radius:18px;box-shadow:var(--shadow);padding:20px}
 .hotel{padding:0;overflow:hidden}
-.img{height:170px;background:linear-gradient(135deg,#9ac9ff,#315efb)}
-.img.two{background:linear-gradient(135deg,#ffd6a5,#ff8f70)}
-.img.three{background:linear-gradient(135deg,#9ee6c1,#2f9e72)}
+.img{height:170px;background-color:#dfe7f5;background-position:center;background-size:cover;background-repeat:no-repeat}
+.img.hotel-central{background-image:url("assets/hotel-central.jpg")}
+.img.hotel-lotus{background-image:url("assets/hotel-lotus.jpg")}
+.img.hotel-riverside{background-image:url("assets/hotel-central.jpg");background-position:center 62%}
+.img.room-deluxe{background-image:url("assets/room-deluxe.jpg")}
+.img.room-superior,.img.two{background-image:url("assets/room-superior.jpg")}
+.img.room-suite,.img.three{background-image:url("assets/room-suite.jpg")}
 .hotel .body{padding:16px}
 .hotel h4{margin:6px 0}
 .hotel p,.hotel small{color:var(--muted)}
