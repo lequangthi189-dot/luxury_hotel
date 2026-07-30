@@ -164,7 +164,8 @@ const meta = {
   service:['Dịch vụ phòng','Ghi nhận dịch vụ phát sinh'],
   checkout:['Trả và kiểm tra phòng','Hoàn tất quy trình trả phòng'],
   invoice:['Hóa đơn','Tổng hợp và thanh toán'],
-  review:['Đánh giá','Đánh giá sạch sẽ và đăng bài'],
+  review:['Đánh giá sạch sẽ','Gửi đánh giá về mức độ sạch sẽ của phòng'],
+  post:['Đăng hình cảm nhận','Đăng hình ảnh và cảm nhận sau khi lưu trú'],
   report:['Báo cáo','Thống kê hiệu quả vận hành'],
 };
 function show(id){
